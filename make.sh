@@ -2,6 +2,8 @@
 
 export SMUDGEPATH=$(pwd)
 
+source ./clean.sh
+
 set -e
 . ./scripts/build.sh
 
@@ -14,3 +16,5 @@ menuentry "Smudge" {
 }
 EOF
 grub-mkrescue -o iso/smudge.iso iso
+
+source ./qemu.sh

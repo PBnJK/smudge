@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
+#include <stdio.h>
 
 #include "kernel/tty.h"
 
@@ -14,6 +15,6 @@
 
 void kmain(void) {
 	term_init();
-	term_write_string(
-		"Hello, Kernel World!\nFrom my custom printf function :-)\n");
+	printf("Hello, Kernel World!\n");
+	printf("What the %c%c%c%c %s\n", 'h', 'e', 'c', 'k', "is this?!");
 }

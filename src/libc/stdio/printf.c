@@ -8,11 +8,11 @@
 #include <stdio.h>
 
 #define PRINT_FN(C)                                                            \
-	static int _print_##C(struct FormatSettings settings, va_list args)
+	static int _print_##C(struct FormatSettings settings, va_list *args)
 
 #define PRINT_CHECK(C, F)                                                      \
 	case C:                                                                    \
-		written += _print_##F(settings, args);                                 \
+		written += _print_##F(settings, &args);                                \
 		break
 
 /* Holds the formatting settings */
@@ -164,14 +164,14 @@ PRINT_FN(percent) {
 PRINT_FN(c) {
 	(void)settings;
 
-	unsigned char c = (unsigned char)va_arg(args, int);
+	unsigned char c = (unsigned char)va_arg(*args, int);
 	putchar(c);
 
 	return 1;
 }
 
 PRINT_FN(s) {
-	const char *str = va_arg(args, const char *);
+	const char *str = va_arg(*args, const char *);
 
 	int max_chars = (settings.has_precision ? settings.precision : INT_MAX);
 	int written = 0;
