@@ -56,7 +56,7 @@ LINK_LIST := \
 	$(ARCHDIR)/crtn.o
 
 .PHONY: all clean install install-headers install-kernel
-.SUFFIXES: .o .c .s
+.SUFFIXES: .o .c .S
 
 all: $(KERNEL_IMAGE)
 
@@ -70,7 +70,7 @@ $(ARCHDIR)/crtbegin.o $(ARCHDIR)/crtend.o:
 .c.o:
 	$(CC) -MD -c $< -o $@ -std=gnu99 $(CFLAGS) $(CPPFLAGS)
 
-.s.o:
+.S.o:
 	$(CC) -MD -c $< -o $@ $(CFLAGS) $(CPPFLAGS)
 
 clean:

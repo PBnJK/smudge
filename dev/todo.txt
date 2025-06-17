@@ -1,0 +1,13 @@
+TODO:
+- [~] Paging
+- [ ] Higher Half;
+- [ ] Permissions;
+- [ ] IDT;
+- [ ] GDT;
+- [ ] Timers (just do PIT for now;)
+- [ ] Keyboard;
+
+LEGEND:
+- [ ] not started
+- [~] started
+- [x] done

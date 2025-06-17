@@ -10,25 +10,41 @@ SECTIONS
 {
 	. = 2M;
 
-	.text BLOCK(4K) : ALIGN(4K)
+	K_ADDRESS = 0xC0000000;
+
+	_kernel_start = .;
+
+    .multiboot.data : {
+		*(.multiboot.data)
+	}
+
+	.multiboot.text : {
+		*(.multiboot.text)
+	}
+
+	. += K_ADDRESS;
+
+	.text ALIGN(4K) : AT (ADDR(.text) - K_ADDRESS)
 	{
-		*(.multiboot)
 		*(.text)
 	}
 
-	.rodata BLOCK(4K) : ALIGN(4K)
+	.rodata ALIGN(4K) : AT (ADDR(.rodata) - K_ADDRESS)
 	{
 		*(.rodata)
 	}
 
-	.data BLOCK(4K) : ALIGN(4K)
+	.data ALIGN(4K) : AT (ADDR(.data) - K_ADDRESS)
 	{
 		*(.data)
 	}
 
-	.bss BLOCK(4K) : ALIGN(4K)
+	.bss ALIGN(4K) : AT (ADDR(.bss) - K_ADDRESS)
 	{
 		*(COMMON)
 		*(.bss)
+		*(.bootstrap_stack)
 	}
+
+	_kernel_end = .;
 }
