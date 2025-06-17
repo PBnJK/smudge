@@ -1,3 +1,3 @@
 # Codename Smudge
 
-An Operating System by pbns
+A simple x86 OS by pedrob

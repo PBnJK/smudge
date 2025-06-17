@@ -1,2 +1,7 @@
+.cache/
+
 bin/
 iso/
+sysroot/
+
+compile_commands.json

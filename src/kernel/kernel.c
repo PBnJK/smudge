@@ -14,5 +14,6 @@
 
 void kmain(void) {
 	term_init();
-	term_write_string("Hello, Kernel World!\n");
+	term_write_string(
+		"Hello, Kernel World!\nFrom my custom printf function :-)\n");
 }
