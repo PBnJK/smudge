@@ -15,6 +15,6 @@
 
 void kmain(void) {
 	term_init();
-	printf("Hello, Kernel World!\n");
-	printf("What the %c%c%c%c %s\n", 'h', 'e', 'c', 'k', "is this?!");
+	printf("Hello, World!\n");
+	printf("%d + %d is %d\n", 123, 456, 123 + 456);
 }

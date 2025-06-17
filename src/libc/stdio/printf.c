@@ -44,6 +44,7 @@ struct FormatSettings {
 PRINT_FN(percent);
 PRINT_FN(c);
 PRINT_FN(s);
+PRINT_FN(d);
 
 /* Prints formatted output to stdout
  * Returns the number of characters written
@@ -141,6 +142,7 @@ int printf(const char *restrict format, ...) {
 				PRINT_CHECK('%', percent);
 				PRINT_CHECK('c', c);
 				PRINT_CHECK('s', s);
+				PRINT_CHECK('d', d);
 			}
 		} else {
 			putchar(*fmt);
@@ -178,6 +180,34 @@ PRINT_FN(s) {
 	while( *str && written < max_chars ) {
 		putchar(*str++);
 		++written;
+	}
+
+	return written;
+}
+
+PRINT_FN(d) {
+	(void)settings;
+
+	int num = va_arg(*args, int);
+	int rev = 0;
+
+	if( num < 0 ) {
+		num = -num;
+		putchar('-');
+	}
+
+	int written = 0;
+	do {
+		rev = (rev * 10) + num % 10;
+		num /= 10;
+		++written;
+	} while( num );
+
+	for( int i = 0; i < written; ++i ) {
+		int c = (rev % 10) + '0';
+		rev /= 10;
+
+		putchar(c);
 	}
 
 	return written;
