@@ -214,5 +214,4 @@ PRINT_FN(d) {
 }
 
 #undef PRINT_FN
-#undef PRINT_FN
 #undef PRINT_CHECK

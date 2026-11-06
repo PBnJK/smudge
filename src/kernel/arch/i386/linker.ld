@@ -8,7 +8,7 @@ ENTRY(_start)
 
 SECTIONS
 {
-	. = 2M;
+	. = 0x00100000;
 
 	K_ADDRESS = 0xC0000000;
 
